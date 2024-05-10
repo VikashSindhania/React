@@ -1,3 +1,67 @@
 #heading {
   color: red;
 }
+
+/* */
+
+.header {
+  display: flex; /* Convert Vertical To Horizontal View & Vice-Versa */
+  justify-content: space-between; /* left End  space-between   Right End  ...        space will be present between food logp and nav-items*/
+  border: 1px solid black;
+}
+
+.logo {
+  width: 100px;
+  background-color: aqua;
+}
+
+.nav-items {
+  padding: 0px 20px; /*  Top and bottom = 0px  left & Rightt side = 20px*/
+}
+
+.nav-items > ul {
+  font-size: 20px;
+  display: flex; /* Convert Vertical To Horizontal View & Vice-Versa */
+  list-style-type: none; /*Remove the Bullet Points */
+  margin-left: 280px;
+}
+
+.nav-items > ul > li {
+  padding: 10px;
+  margin: 10px;
+}
+
+.res-card {
+  width: 200px;
+  height: 300px;
+  border: 1px solid navy;
+}
+
+.search {
+  padding: 10px;
+}
+
+.res-logo {
+  margin: 5px;
+  width: 190px;
+}
+
+.res-card {
+  width: 200px;
+  height: 400px;
+  border: 1px solid navy;
+  padding: 2px;
+}
+
+.res-card:hover {
+  cursor: pointer;
+  border: 2px solid navy;
+}
+
+/* */
+
+.res-container {
+  display: flex;
+  flex-wrap: wrap; /* Wrap your Cards Vertical to Horizontal View*/
+  margin: 5px;
+}
