@@ -864,14 +864,39 @@ const Body = () => {
         <RestaurantCard resName="KFC" cuisine="Burger, Fast Food" /> */}
         {/* <RestaurantCard resData={resObj} /> */}
         {/* sending or passing my resObj Data to resData key*/}
-        <RestaurantCard resListData={resArrList[0]} />
+        {/* <RestaurantCard resListData={resArrList[0]} />
         <RestaurantCard resListData={resArrList[1]} />
-        <RestaurantCard resListData={resArrList[2]} />
+        <RestaurantCard resListData={resArrList[2]} /> */}
         {/* <RestaurantCard resListData={resArrList[3]} />              When You are building Production Level App then You have to Use Reusable Component */}
-        <RestaurantCard resListData={resArrList[3]} />
+        {/* <RestaurantCard resListData={resArrList[3]} />
         <RestaurantCard resListData={resArrList[4]} />
         <RestaurantCard resListData={resArrList[5]} />
-        <RestaurantCard resListData={resArrList[6]} />
+        <RestaurantCard resListData={resArrList[6]} /> */}
+
+        {/* Above Code Modified */}
+        {/* 
+        {resArrList.map((restaurant) =>  resArrListData = {restaurant})} */}
+        {/* {resArrList.map((restaurant) => (
+          <RestaurantCard resListData={restaurant} /> */}
+
+        {/* //  We have built here Reusable RestaurantCard  Component       The Above are the two powerful line  {resArrList.map((restaurant) => (    --> its a Function Which
+          // returning a piece of JSX  -->    <RestaurantCard resListData={restaurant} />
+         // <RestaurantCard resListData={restaurant} />    Eaach of the List Item should be UniQuely Presented , means should have a key properties 
+         //key = {} When You are looping to anything. Remeber When you are looping Anything by using map, filter ,reduce ,for ,etc. You should always mention the key properties.
+         //Example shown below: */}
+
+        {/* Why to define key ? Reason --> If You have list of Cards let take = 100 cards so now you want that id = xyx will be placed at first or some other position which u want  . then React will render that Key only
+         instead of rendering a 100 card at every render . so here "Key" is playing Unique Role . & this how react trace it .For Example here  =  key={restaurant.info.id} 
+         and Whatever the key you should give it should be Unique.
+         */}
+        {/* 
+         {resArrList.map((restaurant) => <RestaurantCard  key = {index} resListData =  {restaurant}>)} Its Not a good Habit of defining Key as Index. Its Not recommended  to used By React
+         In case If You don't atleast have an id then you can use "index" as the key. The best thing is  to use UniQue id. ask from backened developer to share the id.
+         */}
+
+        {resArrList.map((restaurant) => (
+          <RestaurantCard key={restaurant.info.id} resListData={restaurant} />
+        ))}
       </div>
     </div>
   );
