@@ -55,4 +55,7 @@ Like a Dependency Tree.
 
     \*. npm run start or also give npm start but its not work for build.
 
-25.
+25. Config Driven UI Latest Practice //show different data on different state for Ex -> Swiggy Card --> For System Design Engineer.
+26. config Driven UI --> Data Driven UI // Red background color in Delhi, blue background color in kolkata, different color according to different states. Just for Example when asked in System Design Engineering Interview.
+27.
+28.
