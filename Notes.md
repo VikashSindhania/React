@@ -57,5 +57,19 @@ Like a Dependency Tree.
 
 25. Config Driven UI Latest Practice //show different data on different state for Ex -> Swiggy Card --> For System Design Engineer.
 26. config Driven UI --> Data Driven UI // Red background color in Delhi, blue background color in kolkata, different color according to different states. Just for Example when asked in System Design Engineering Interview.
-27.
-28.
+
+27. Industry Best Way of code Writing Practices is --> That Whatever Your Project code Should be put in "src" folder.
+
+28. Never Keep Your Hard Data in Your Component Files. Make File Like utils.js,commom.js,config.js utils Means Which Will Used all across Our Apps.
+
+29. **Two types of Export/Import** -->
+30. ### Default Export/Import => export default Component; import components from path;
+31. # Named Export/Import => import { Component } from path; Use When u have to export multiple things
+
+32. # React Hooks
+33. (Normal JS utility functions)
+34. useState() = super Power state variable.
+
+35.25. A hook is a javascript function . React will keep your UI sync with Your data layer . UI directlyProportionaTo dataLayer. **Mechanism --> As Soon as the Data Change React will rerender my component**
+
+# React Uses Reconcillation Algorithm, Its also Known as React Fiber. React is doing Efficient DOM Manipulaion how because it is using Virtual DOM . it has Diff algorithm (object Representation in html tag like div,h1, etc..)

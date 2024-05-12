@@ -67,3 +67,8 @@
   flex-wrap: wrap; /* Wrap your Cards Vertical to Horizontal View*/
   margin: 5px;
 }
+
+.filter-btn {
+  margin: 5px;
+  padding: 5px;
+}
