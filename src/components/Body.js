@@ -1,6 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import resArrList from "../utils/mockData";
-import { useState } from "react"; // Named Exports Variables that why we are using curly braces.
+import { useState, useEffect } from "react"; // Named Exports Variables that why we are using curly braces.
+import Shimmer from "./Shimmer";
 
 const resObj = {
   id: "863062",
@@ -111,8 +112,13 @@ const Body = () => {
   //     },
   //   },
   // ]);
-  const [ListOfRestaurants, setListOfRestaurants] = useState(resArrList); // React is Keeping an Eye on state Variable. //Constantly tracking & Checking.
+  // const [ListOfRestaurants, setListOfRestaurants] = useState(resArrList); // React is Keeping an Eye on state Variable. //Constantly tracking & Checking.
   //Going with JS,HTML,Css. it eill be more complex and lengthy to handle.Here React plays Important Role. Super Power of React;
+
+  const [ListOfRestaurants, setListOfRestaurants] = useState([]);
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+
+  const [searchText, setSearchText] = useState("");
 
   //Normal JKS Variable;
   //let ListOfRestaurants = []
@@ -160,18 +166,96 @@ const Body = () => {
   //   },
   // ];
 
-  return (
+  // console.log("ListOfRestaurants", ListOfRestaurants);
+  console.log("Full Body Component Rendered---1");
+
+  useEffect(() => {
+    fetchData();
+    console.log("useEffect called");
+  }, []); //This component can be called After Your Component Renders. it Quicky call the useEffect method or function  when render cycle completely rendered.
+
+  const fetchData = async () => {
+    const data = await fetch(
+      // fetch Method is a Browser register  function Which returns a promise object an d then we use "then" methos to extract but its now older version. Use async & await for this to handle API.
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.59080&lng=85.13480&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+
+    //const json = await data.json();
+
+    //console.log(json);
+    setListOfRestaurants(
+      // When i have to filter on some condition then i will use my "ListOfRestaurants" variable value.
+      //json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
+      //Optional Chaning
+      //json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      resArrList
+    );
+
+    setFilteredRestaurants(resArrList); // when we are fetching Data I am updating a copy of ListOfRestaurants & FilteredRestaurants both as well.
+  };
+
+  //Conditional Rendering --> A rendering Which is based on the condition.
+  // if (ListOfRestaurants.length === 0) {
+  //   // return <h1>Loading...</h1>;
+  //   return <Shimmer />;
+  // }
+
+  // Whenever state variables update, react triggers a reconcilation cycle (re-renders the component)
+  console.log("Full Body Component Rendered---2");
+
+  return ListOfRestaurants.length === 0 ? (
+    <Shimmer />
+  ) : (
     // return a Piece of JSX code       {() => {console.log("Button Clicked")}} its a callback function which is written inside Javascript;
     <div className="body">
       <div className="filter">
+        <div className="search">
+          <input
+            type="text"
+            className="search-box"
+            placeholder="Search-food"
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value); // typing "cafe" on input then this onChange Method is calling  setSearchText method each time and its just updating the local
+              //state variable "SearchText" which is define in useState  const [SearchText, setSearchText] = useState("");  and this body component is just refreshing each input value you type.
+              // virtualDom is the object Representation of the JSX(Actual DOm).
+              //Reconcillation Concept, Diff Algorithm concept. using here.  DOM Manipulation is very costly and React here playing it important  role. Making it Simply.
+              //Note On input not only input value getting rendered  whole body component is getting Re-Render. only final updating will be done on input at actual DOM.
+              // Virtual Dom is just an copy of Actaul DOM which is used for the comparison.
+            }}
+          />
+          <button
+            className="search-btn"
+            onClick={() => {
+              // Filter the restaurant cards and update the UI
+              //Search text
+              console.log("ListOfRestaurants", ListOfRestaurants);
+              console.log(searchText);
+              const filteredRestaurant = ListOfRestaurants.filter(
+                (
+                  res // Here ListOfRestaurants holding the original fetch Data & we aare doing filtering  operation on this.
+                ) =>
+                  // res.info.name == searchText;
+                  res?.info?.name
+                    ?.toLowerCase()
+                    .includes(searchText.toLowerCase())
+              );
+              console.log("filteredRestaurant", filteredRestaurant);
+              setFilteredRestaurants(filteredRestaurant);
+            }}
+          >
+            Search
+          </button>
+        </div>
         <button
           className="filter-btn"
           onClick={() => {
             let filteredList = ListOfRestaurants.filter(
               (restro) => restro.info.avgRatingString > 4
             );
-            console.log("button Clicked", ListOfRestaurants);
+
             setListOfRestaurants(filteredList);
+            console.log("Top Rating Button Clicked", filteredList);
           }}
         >
           Top Rated Restaurants
@@ -219,7 +303,10 @@ const Body = () => {
         {/* {resArrList.map((restaurant) => (
           <RestaurantCard key={restaurant.info.id} resListData={restaurant} /> */}
 
-        {ListOfRestaurants.map((restaurant) => (
+        {/* {ListOfRestaurants.map((restaurant) => (
+          <RestaurantCard key={restaurant.info.id} resListData={restaurant} /> */}
+
+        {filteredRestaurants.map((restaurant) => (
           <RestaurantCard key={restaurant.info.id} resListData={restaurant} />
         ))}
       </div>

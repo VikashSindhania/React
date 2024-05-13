@@ -13,7 +13,7 @@ const styleCard = {
 // const RestaurantCard = ({ resName, cuisine }) => {
 
 const RestaurantCard = ({ resListData }) => {
-  console.log(resListData.info);
+  //console.log(resListData.info);
   const { name, cuisines, avgRatingString, costForTwo } = resListData.info;
   const { deliveryTime } = resListData?.info.sla; // chaining Operation Can also Write like this
   return (

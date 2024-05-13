@@ -70,6 +70,15 @@ Like a Dependency Tree.
 33. (Normal JS utility functions)
 34. useState() = super Power state variable.
 
-35.25. A hook is a javascript function . React will keep your UI sync with Your data layer . UI directlyProportionaTo dataLayer. **Mechanism --> As Soon as the Data Change React will rerender my component**
+35. A hook is a javascript function . React will keep your UI sync with Your data layer . UI directlyProportionaTo dataLayer. **Mechanism --> As Soon as the Data Change React will rerender my component**
 
 # React Uses Reconcillation Algorithm, Its also Known as React Fiber. React is doing Efficient DOM Manipulaion how because it is using Virtual DOM . it has Diff algorithm (object Representation in html tag like div,h1, etc..)
+
+36.UseState is used to create State Variables.
+
+37. hook is at last a normal javascript function. it has its own useCases.
+    one is callBack function which takes as an argument & other one is the dependencies Array. useEffect(() => {},[])
+
+38. Shimmer UI is best for u to used in case of "Loading..."
+
+39. The people who codes slow does not need to debug their code or have to debug then it have to spend very less time.People who fast code have to debug their code a lot. by Namaste React Akshay Saini Said.
