@@ -2,6 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Error from "./components/Error";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"; // RouterProvider will provide our routing configuration "appRouter" to our app
+import RestaurantMenu from "./components/RestaurantMenu";
 
 /**
  * Header
@@ -38,18 +43,82 @@ import Body from "./components/Body";
 
 // From Backened the Data Should be come in JSON format
 
+{
+  /* <Header />                   // Before Routing Integration I am going like this...
+      <Body /> */
+}
+{
+  /* if path = / */
+}
+{
+  /* <Body /> */
+}
+
+{
+  /* if path = /about */
+}
+{
+  /* <About />     Then Load the About Component*/
+}
+
 const AppLayout = () => {
   return (
-    <div className="app">
+    <>
       <Header />
-      <Body />
-    </div>
+      {/* Routes component will be replaced by this outlet */}
+      <Outlet />
+    </>
   );
 };
 
+//We are creating our router configuration inside our App Router.
+//routerCongiguration means --> an information that will tell browser Router what will happen on specific paths.
+
+const appRouter = createBrowserRouter([
+  // createBrowserRouter -->  it takes a list of path.path is an object ...
+  {
+    path: "/",
+    element: <AppLayout />, //Every Page is a component.
+    children: [
+      // Adding children key  like this will not loose your Header Component.It will render below Header
+
+      {
+        path: "/", // when my path is / then its load the Body component
+        element: <Body />,
+      },
+
+      {
+        path: "/about", // if my path is /about
+        element: <About />, // then load my About component
+      },
+      {
+        path: "/contact", // if my path is /contact
+        element: <Contact />, // then load my About component
+      },
+      {
+        path: "/restaurants/:resId", // resId is dynamic here. We use like this for dynamic Routings
+        element: <RestaurantMenu />,
+      },
+    ], //
+    errorElement: <Error />, // if There is an error then load the error Component. if it not find the "/" path then this Error component will rendered.
+  },
+  // {
+  //   path: "/about", // if my path is /about
+  //   element: <About />, // then load my About component
+  // },
+  // {
+  //   path: "/contact", // if my path is /about
+  //   element: <Contact />, // then load my About component
+  // },
+]);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
+//root.render(<AppLayout />); // When we are not defined Routing configuration then this is how it is rendering the App.
+
+root.render(<RouterProvider router={appRouter} />); //This is how We Define different routes in React
 
 {
   /* */
 }
+
+// App.js is our root component of our Project. its Standard Way of Writing code in Industry Era.

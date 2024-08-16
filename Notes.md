@@ -82,3 +82,17 @@ Like a Dependency Tree.
 38. Shimmer UI is best for u to used in case of "Loading..."
 
 39. The people who codes slow does not need to debug their code or have to debug then it have to spend very less time.People who fast code have to debug their code a lot. by Namaste React Akshay Saini Said.
+
+40. # reactRouterDom --> npm i react-router-dom
+
+    **whenever we have to do routes we have to use Routing Configuration by importing like this import { createBrowserRouter } from "react-router-dom";**
+
+41. Two types of routing in Web Apps
+    -client Side Routing --> When I load the app for the first time it already has the component code. I don't need to call the network and then fetching data and rendering in html. For Ex- contactUs Page
+    -server Side Routing --> When we are making any Network calls and then fetching data.
+
+42. when I am loading a class based component on our Webpage thats means i am creating a instace of that class .
+43. when I am loading a functional based component on our Webpage thats means you are mountinting ,calling,invoking,loading etc that function or Functional based component.
+44. React wants to Quickly render the component then make an API call to Quickly fill the data or render the data.
+
+45. \*_In class Based Component Reacts Quickly render the component structure (for ex - constructor then render method rendered) and then make an API call using componentDidMount method._

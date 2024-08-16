@@ -2,6 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import resArrList from "../utils/mockData";
 import { useState, useEffect } from "react"; // Named Exports Variables that why we are using curly braces.
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const resObj = {
   id: "863062",
@@ -118,7 +119,9 @@ const Body = () => {
   const [ListOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
 
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState(""); //Every time called your useState inside your body,Not out of Your body,
+  // Purpose of useState --> it is used to create a local state variable inside your functional component.
+  //Never used Your useState inside your if Else block or in condition.function,for loop. This can create inconsistency in tthe program.  Try to keep on Top.
 
   //Normal JKS Variable;
   //let ListOfRestaurants = []
@@ -306,8 +309,16 @@ const Body = () => {
         {/* {ListOfRestaurants.map((restaurant) => (
           <RestaurantCard key={restaurant.info.id} resListData={restaurant} /> */}
 
-        {filteredRestaurants.map((restaurant) => (
+        {/* {filteredRestaurants.map((restaurant) => (
           <RestaurantCard key={restaurant.info.id} resListData={restaurant} />
+        ))} */}
+        {filteredRestaurants.map((restaurant) => (
+          <Link
+            key={restaurant.info.id}
+            to={"/restaurants/" + restaurant.info.id}
+          >
+            <RestaurantCard resListData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>
