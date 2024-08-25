@@ -96,3 +96,86 @@ Like a Dependency Tree.
 44. React wants to Quickly render the component then make an API call to Quickly fill the data or render the data.
 
 45. \*_In class Based Component Reacts Quickly render the component structure (for ex - constructor then render method rendered) and then make an API call using componentDidMount method._
+
+46. story till Mounting Phase --> History till ComponentDidMount{
+47. entered in the class based component
+48. then constructor called
+49. then render called
+50. DOM Updated with its defined JSX Element
+51. ComponentDidMount called ---- till here mounting phase completed.
+52. }
+
+# class Based Component [
+
+53. # MOUNTING {
+
+# Constructor(dummy)
+
+# Render (dummy)
+
+# <HTML Dummy>
+
+# Component Did Mount
+
+# <API call>
+
+# <this.setState> --> state variable is updated
+
+54. # }
+
+55. # UPDATING {
+56. # render(API data)
+57. <HTML (new API Data)>
+    # componentDidUpdate is Called
+
+# }
+
+# Unmounting{
+
+# componentWillUnmount
+
+# }
+
+# ]
+
+useEffect(() => {API call,[]}) run once after render
+useEffect(() => {API call}) run at Every Render
+useEffect(() => {API call,[count]}) called everytime when count changes.because now useSffect depend on the "count" state variable.
+[] --> React Developer said there will be multiple state variables instead of defining like this copmponentDidUpdate(prevProps,prevState){
+if(this.state.count !== prevState.count || this.state.count !== prevState.count2)
+}
+
+# componentDidUpdate is called after Every Update in class Based Component.
+
+# componentWillUnmount ---> remember as it is used for clean up. it is called when we are leaving the page.Its a SinglePage(SPA). We are just changing the component in the UI
+
+58. Issue come up with SPA
+59. componentDidMount(){
+60. this.interval = setInterval(() => {
+61. console.log("NAMASTE ")
+62. },1000)
+63. }
+64. so to clean it up instead of increasing its rendering it multiple times and times come when browser start hanging so to avoid this we define the function in componentWillUnmount()
+    componentWillUnmount(){
+    clearInterval(this.interval);
+    console.log("ComponentWillUnmount)
+    }
+
+65. useEffect(() => {
+    setInterval(() => {
+    console.log("Namastei React Op")
+    },1000)
+    },[])
+
+66. need to clean up if case come in functional component -->
+67. this how you will unmount it... //Unmounting Phase
+    useEffect(() => {
+    const interval = setInterval(() => {
+    console.log("API call")
+    },1000)
+    return () => {
+    clearInterval(interval)
+    console.log("useEffect Return")
+    }
+    },[])
+    console.log("Render")

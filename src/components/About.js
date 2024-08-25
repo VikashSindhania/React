@@ -4,19 +4,24 @@ import UserClass from "./UserClass";
 import { Component } from "react";
 
 class About extends Component {
+  //React.component  --> component
   //class About extends React.Component {                        // this how you also integrate
   constructor(props) {
     super(props);
 
-    console.log("Parent Constructor");
+    console.log("Parent Constructor"); //-----1 Parent
   }
 
   componentDidMount() {
+    //ComponentDidMount is Used to make API calls , Reason-- I want to Quickly Render the component and then called the API to fill the data and then it reRender the component.
+    //---6  see UseClass.js
     // Is Used to make API Calls
     console.log("Parent Component Did Mount");
   }
 
   render() {
+    // ----2 Parent
+    // render methos will return some piece of JSX
     console.log("Parent Render");
     return (
       <div>
@@ -26,28 +31,86 @@ class About extends Component {
           name={"Akshay Saini (classes)"}
           location={"Dehradun Class"}
         />
-        <UserClass //UserClass is a Component
+        {/* <UserClass //UserClass is a Component
           name={"Elon Musk (classes)"}
           location={"USA"}
-        />
+        /> */}
       </div>
     );
   }
 }
 
 export default About;
-/* -Parent Constructor
+
+// render() {
+//   // ----2 Parent
+//   // render methos will return some piece of JSX
+//   console.log("Parent Render");
+//   return (
+//     <div>
+//       <h1>About Class Component</h1>
+//       <h2>This is Namastei React Web Series</h2>
+//       <UserClass //UserClass is a Component
+//         name={"Akshay Saini (classes)"}
+//         location={"Dehradun Class"}
+//       />
+//       <UserClass //UserClass is a Component
+//         name={"Elon Musk (classes)"}
+//         location={"USA"}
+//       />
+//         <UserClass //UserClass is a Component
+//           name={"Elon Musk (classes)"}
+//           location={"USA"}
+//         />
+//     </div>
+//   );
+// }
+// }
+
+// export default About;
+
+//When there are Parent to single  child are there this how the render method is called
+/* -Parent Constructor        First constructor then render method is called then  ComponentDidMount is called.
     -Parent render
     - Akshay Constructor
     - Akshay Render
+    - Akshay ComponentDidMount
 
-    -Elon Constructor
-    -Elon Render
+    -Parent ComponentDidMount
+
+     
+
+*/
+//class Life Cycle hooks
+//When there are multiple children are there this how the render method is called
+/* -Parent Constructor        First constructor then render method is called then  ComponentDidMount is called.
+    -Parent render
+    - Akshay Saini (class) child Constructor
+    - Akshay Saini (class) child Render
+
+    -Elon Musk child Constructor
+    -Elon Musk child Render
     
-    -Component Did Mount  of Akshay
-    -component Did Unmount of Elon
+    -Akshay Saini (class) child Component Did Mount  of Akshay
+    -Elon Musk child component Did mount of Elon
 
     -Component DidMount of Parent
+
+    //Similarly 
+    Parent Constructor
+    Parent render
+
+    First Child Constructor
+    First Child REnder
+
+    second Child Constructor
+    second Child render
+
+    <DOM UPDATED - IN SINGLE BATCH>
+    FirstChild component Did Mount
+    SecondChild component Did Mount
+
+    Parent ComponentDidMount
 
 */
 
