@@ -1,12 +1,16 @@
 import { LOGO_URL } from "../utils/constant"; //logo_url is a Javascript Constant Variable;
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
   let btnName = "Login";
 
   const [btnNameReact, setBtnNameReact] = useState("Login");
   console.log("Header Render");
+
+  //Hook Should be called Top...
+  const onlineStatus = useOnlineStatus();
 
   // useEffect is called by passing two arguments.one is callback function  (callback) => { ...} and other one id dependency Argument.
   // It will definitely called after initial render.
@@ -24,6 +28,7 @@ const Header = () => {
       </div>
       <div className="nav-items">
         <ul>
+          <li>Online Status: {onlineStatus ? "connected" : "disconnected"}</li>
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -36,6 +41,11 @@ const Header = () => {
           <li>
             <Link to="/contact">Contact Us</Link>
           </li>
+
+          <li>
+            <Link to="/grocery">Grocery</Link>
+          </li>
+
           <li>Card</li>
           {/* <button className="login">Login</button> */}
           <button

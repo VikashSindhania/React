@@ -179,3 +179,19 @@ if(this.state.count !== prevState.count || this.state.count !== prevState.count2
     }
     },[])
     console.log("Render")
+
+68. A hook at last is a utility a Normal Javascript function. its also knowns as helper function just as fetching Data.
+69. custom hook that will make your code modular,readable,reusable
+70. hook is at the end is a utility function.
+71. useParams is a hook, Always try to create it in a util folder
+    72.Good convention to follow . always create a seperate file for a seperate hook.I will name the same file that is similar to hook functionality.Always start with the "use" that means its a hook . React understand that.
+
+72. Hook has its own state ,own sideeffects and make the code more durable & Readable.
+
+73. chunking
+74. Code Splitting
+75. Dynamic Loading
+76. Lazy loading
+77. You have to do dymamic bundling in for smaller chunks.
+78. We are dividing into like this so that bundler perform better. it can chunked in different bundles so that the Application don't get loaded too and it should run smoothly. How we achieve this ?
+79. We achieve the above mechanism to work by using the concept of Lazy loading. This lazy loading will reduce the load on the App and make its faster by defining different component have different js file in its bundler.
