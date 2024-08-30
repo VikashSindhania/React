@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react"; //Power of lazy loading & Suspense
+import React, { lazy, Suspense, useState, useEffect } from "react"; //Power of lazy loading & Suspense
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -8,13 +8,15 @@ import Error from "./components/Error";
 //import Grocery from "./components/Grocery";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"; // RouterProvider will provide our routing configuration "appRouter" to our app
 import RestaurantMenu from "./components/RestaurantMenu";
+import UserContext from "./utils/UserContext";
 
 //lec-09 -- 26-08-2024
 //Chunking
 //Code Splitting
 // Dynamic Bundling
 //Dynamic Import
-//lazy loading ----------> Divide it into different bundler so that When needed then only that page will be loaded instead of loading at all once.
+//lazy loading ---------->
+//Divide it into different bundler so that When needed then only that page will be loaded instead of loading at all once.
 // It will be useful when defining more tha 20 components.
 // on demand loading   --> when on demand then only load , initially we don't load at all so that we define bty changing the way of importing Grocery Component  and define in  lazy loading...
 // Lazy -- This lazy function is provided by React which takes a callback function and we have to define the path in the import function.
@@ -79,11 +81,31 @@ const About = lazy(() => import("./components/About"));
 }
 
 const AppLayout = () => {
+  const [userName, setUserName] = useState();
+
+  //Authentication
+  useEffect(() => {
+    //Make an API call and send username and password
+    const data = {
+      name: "Vikash Kumar",
+    };
+    setUserName(data.name);
+  }, []);
+
   return (
+    //Default UserName
     <>
-      <Header />
-      {/* Routes component will be replaced by this outlet */}
-      <Outlet />
+      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+        {/* {Vikash Kumar} */}
+        {/* // This is how we transferred the data to all the components.With help of "Provider" */}
+
+        <UserContext.Provider value={{ loggedInUser: "Elon Musk" }}>
+          {/* {Elon Musk}   */}
+          <Header />
+        </UserContext.Provider>
+        {/* Routes component will be replaced by this outlet */}
+        <Outlet />
+      </UserContext.Provider>
     </>
   );
 };

@@ -14,7 +14,7 @@ const useOnlineStatus = () => {
       setOnlineStatus(true);
     });
   }, []);
-  console.log("Online status", onlineStatus);
+  //  console.log("Online status", onlineStatus);
   return onlineStatus; //here Online status state variable  is behaving like a boolean.
 };
 

@@ -1,6 +1,7 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import resArrList from "../utils/mockData";
-import { useState, useEffect } from "react"; // Named Exports Variables that why we are using curly braces.
+import { useState, useEffect, useContext } from "react"; // Named Exports Variables that why we are using curly braces.
+import UserContext from "../utils/UserContext";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 
@@ -172,6 +173,8 @@ const Body = () => {
   // console.log("ListOfRestaurants", ListOfRestaurants);
   console.log("Full Body Component Rendered---1");
 
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard); //With PromotedLabel here is behaving as an HigherOrderFunctional Component.
+
   useEffect(() => {
     fetchData();
     console.log("useEffect called");
@@ -206,16 +209,18 @@ const Body = () => {
   // Whenever state variables update, react triggers a reconcilation cycle (re-renders the component)
   console.log("Full Body Component Rendered---2");
 
+  const { loggedInUser, setUserName } = useContext(UserContext); // concept of useContext
+
   return ListOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
     // return a Piece of JSX code       {() => {console.log("Button Clicked")}} its a callback function which is written inside Javascript;
     <div className="body">
-      <div className="filter">
-        <div className="search">
+      <div className="filter flex">
+        <div className="search m-4 px-4">
           <input
             type="text"
-            className="search-box"
+            className="border border-solid border-black"
             placeholder="Search-food"
             value={searchText}
             onChange={(e) => {
@@ -228,7 +233,7 @@ const Body = () => {
             }}
           />
           <button
-            className="search-btn"
+            className="px-4 py-2 bg-green-400 rounded-2xl "
             onClick={() => {
               // Filter the restaurant cards and update the UI
               //Search text
@@ -250,21 +255,32 @@ const Body = () => {
             Search
           </button>
         </div>
-        <button
-          className="filter-btn"
-          onClick={() => {
-            let filteredList = ListOfRestaurants.filter(
-              (restro) => restro.info.avgRatingString > 4
-            );
 
-            setListOfRestaurants(filteredList);
-            console.log("Top Rating Button Clicked", filteredList);
-          }}
-        >
-          Top Rated Restaurants
-        </button>
+        <div className="search m-4 p-4 flex items-center">
+          <label>UserName:</label>
+          <input
+            className="border-black p-2 "
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)} // here we call the function {(e) => setUserName()}}
+          />
+        </div>
+        {/* <div className="search m-4 p-4 flex items-center">
+          <button
+            className="px-4 py-2 bg-gray-100 rounded-2xl"
+            onClick={() => {
+              let filteredList = ListOfRestaurants.filter(
+                (restro) => restro.info.avgRatingString > 4
+              );
+
+              setListOfRestaurants(filteredList);
+              console.log("Top Rating Button Clicked", filteredList);
+            }}
+          >
+            Top Rated Restaurants
+          </button>
+        </div> */}
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap">
         {/* The Componment which will be always be in Reuse its better to define that functional Component Independently*/}
         {/* <RestaurantCard
             resName="Meghana Foods"
@@ -317,7 +333,15 @@ const Body = () => {
             key={restaurant.info.id}
             to={"/restaurants/" + restaurant.info.id}
           >
-            <RestaurantCard resListData={restaurant} />
+            {
+              /* {if the restaurant id promoted then add a promoted label to it} */
+              restaurant.info.promoted ? (
+                <RestaurantCardPromoted resListData={restaurant} />
+              ) : (
+                <RestaurantCard resListData={restaurant} />
+              )
+            }
+            {/* <RestaurantCard resListData={restaurant} /> */}
           </Link>
         ))}
       </div>

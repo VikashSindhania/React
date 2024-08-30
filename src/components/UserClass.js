@@ -15,7 +15,7 @@ class UserClass extends React.Component {
 
   // Once the render phase is completed and DOM is updated, then API Phase will be called with the help of Lifecycle componentDidMount...
   async componentDidMount() {
-    const fetchData = await fetch("https://api.github.com/users/vikash");
+    const fetchData = await fetch("https://api.github.com/users/Pearl");
     const json = await fetchData.json();
     console.log("jsonData", json); // Changed from jsonData to json
 

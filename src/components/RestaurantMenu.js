@@ -1,18 +1,22 @@
+import { useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom"; // For dynamic Routing to get an dynamic id here we use useParams
 
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import RestaurantCategory from "./RestaurantCategory";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
-  console.log(resId);
+  //console.log(resId);
 
   const onlineStatus = useOnlineStatus();
 
   const resInfo = useRestaurantMenu(resId);
 
-  console.log("resInfo", resInfo);
+  const [showIndex, setShowIndex] = useState(null);
+
+  // console.log("resInfo", resInfo);
 
   if (resInfo === null) return <Shimmer />;
 
@@ -21,9 +25,18 @@ const RestaurantMenu = () => {
 
   const { itemCards } =
     resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
-  console.log("itemCards", itemCards);
+  //console.log("itemCards", itemCards);
+  console.log(resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
 
-  console.log("onlineStatus", onlineStatus);
+  const categories =
+    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (c) =>
+        c.card?.["card"]?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
+  console.log("categories", categories);
+
+  //console.log("onlineStatus", onlineStatus);
   if (onlineStatus === false)
     return (
       <h1>Look like you're offline !! Please check your Internet Connection</h1>
@@ -40,28 +53,41 @@ const RestaurantMenu = () => {
     //   </ul>
     // </div>
 
-    <div className="menu">
+    <div className="text-center">
       {/* <h1>{resInfo.cards[2]?.card?.card?.info.name}</h1> */}
-      <h1>{name}</h1>
-      <p>
+      <h1 className="font-bold my-6 text-2xl">{name}</h1>
+      <p className="font-bold text-lg">
         {cuisines.join(", ")} - {costForTwoMessage}
       </p>
-      <h3>{costForTwoMessage}</h3>
-      <h2>Menu</h2>
-      <ul>
+
+      {/* {categories accordions} */}
+      {categories.map((category, index) => (
+        //controlled components now
+        <RestaurantCategory
+          key={category?.card?.card.title}
+          data={category?.card?.card}
+          // showItems={index && true} // Lifting My state up
+          showItems={index === showIndex ? true : false}
+          setShowIndex={() => setShowIndex(index)} //this how we can pass the function to the child component
+        />
+      ))}
+
+      {/* <h3>{costForTwoMessage}</h3>
+      <h2>Menu</h2> */}
+      {/* <ul>
         {itemCards.map((item) => (
           <li key={item.card.info.id}>
             {item.card.info.name} -{"Rs"}
             {item.card.info.price / 100 || item.card.info.defaultPrice / 100}
           </li>
-        ))}
-        {/* <li>{itemCards[0].card.info.name}</li>
+        ))} */}
+      {/* <li>{itemCards[0].card.info.name}</li>
         <li>{itemCards[1].card.info.name}</li>
         <li>{itemCards[2].card.info.name}</li>
         <li>Biryani</li>
         <li>Burgers</li>
         <li>Diet Coke</li> */}
-      </ul>
+      {/* </ul> */}
     </div>
   );
 };

@@ -195,3 +195,67 @@ if(this.state.count !== prevState.count || this.state.count !== prevState.count2
 77. You have to do dymamic bundling in for smaller chunks.
 78. We are dividing into like this so that bundler perform better. it can chunked in different bundles so that the Application don't get loaded too and it should run smoothly. How we achieve this ?
 79. We achieve the above mechanism to work by using the concept of Lazy loading. This lazy loading will reduce the load on the App and make its faster by defining different component have different js file in its bundler.
+
+80. Style.css -->
+81. we use PreStyled Component in this by Integrating different library of css like Tailwind, Material-UI ,BootStrap ,chakra Ui,s tyled-components,Ant-Design etc instead of writing core css for each of them.
+82. PostCSS - a tool for transforming CSS with JavaScript.
+83. npx means invoking .npx tailwindcss init --> We are executing tailwindcss in our project.
+84. {
+    "plugins": {
+    "tailwindcss": {}
+    }
+    }
+    The above configuration is of "postcssrc file" where it is saying That we are using "Tailwind" in our project and please "Parcel" understand this .
+
+85. HigherOrderComponents is a function that takes the component enhances the component and returns back a new component.
+86. In React Data flow from one way direction. That means parent send data to their child and then that child send their data to their child. just goes like this.means "chaining Operation , linkage operation without skipping"This is how we say it is a PROPSDRILLING concept. I am drilling the props from Top to bottom of the leaf.
+87. In React Component has their own state and props. without it React is nothing.
+
+88. React gave the super power known as React Context . which avoid propDrilling. context is like a place where all your global data is present and that data can be used by another component in its whole application.Top to the 10 leaf components you can easily pass the data avioiding propdrilling concept.This data can we access at anythere in the app. Context here means Central store . context solves the problems of props drilling.
+
+89. Now going through the concept of React Context . then points come which data have to be saved. so maximum of the component or page which needed to show in every page that data need to be stored. Ex- User Name showing in Every WebPage, DarkMode,LightMode.
+90.
+91. useContext act as like a Global Object.
+
+92. We can't useContext hook in a a class based component because it is hook which is defined for functional component. This is how we can access in class components . 93. import UserContext from "../../../../path"; not like this import {UserContext} from "../../../../path". file name cannot be placed in {curly braces }.
+93. {hooks} can be placed in curly braces during importation in any component,
+94. div>
+    LoggedIn User
+    <UserContext.Consumer> // This is an component
+    {(data) => console.log(data)} // Its a call back function which gets data inside it. who passes the data? Racat takes care of it.
+    </UserContext.Consumer>
+    </div>
+
+95. return (
+    <>
+    <UserContext.Provider value={{ loggedInUser: userName }}> // Wrapping all the components inside the UserContext.provider . so the data which is provided as the value can be transfered to all Wrapped components
+    <Header />
+    {/_ Routes component will be replaced by this outlet _/}  
+     <Outlet />
+    </UserContext.Provider>
+    </>
+    );
+
+    96. <UserContext.provider/> if i can provide my provider to a specific portion or to a specific component we can do. "context" is a global space where we provide our data to whole applications or at least some of the specific portion of the App. For Example if we want to transfer the data to a <Header/> component only then we can wrap it provider like this.
+
+96. <userContext.Provider value={{ loggedInUser: userName }} >
+97. <Header />
+    </UserContext.Provider>
+    <Outlet />
+    </>
+    );
+
+    <>
+    <UserContext.Provider value={{ loggedInUser: userName }}>
+    {/_ {Vikash Kumar} _/}
+    {/_ // This is how we transferred the data to all the components.With help of "Provider" _/}
+
+        <UserContext.Provider value={{ loggedInUser: "Elon Musk" }}>
+          {/* {Elon Musk}   */}
+          <Header />
+        </UserContext.Provider>
+        {/* Routes component will be replaced by this outlet */}
+        <Outlet />
+
+    </UserContext.Provider>
+    </>

@@ -10,6 +10,7 @@ const resArrList = [
       cuisines: ["Thalis", "Chinese"],
       avgRating: 3.3,
       veg: true,
+      promoted: true,
       parentId: "13893",
       avgRatingString: "3.3",
       totalRatingsString: "20+",
@@ -79,6 +80,7 @@ const resArrList = [
       avgRating: 4.2,
       parentId: "437308",
       avgRatingString: "4.2",
+      promoted: false,
       totalRatingsString: "100+",
       sla: {
         deliveryTime: 61,
@@ -146,6 +148,7 @@ const resArrList = [
       cuisines: ["Indian"],
       avgRating: 3.2,
       parentId: "12617",
+      promoted: true,
       avgRatingString: "3.2",
       totalRatingsString: "20+",
       sla: {
@@ -215,6 +218,7 @@ const resArrList = [
       cuisines: ["Pizzas", "Fast Food", "Burgers"],
       avgRating: 4.7,
       parentId: "14585",
+      promoted: false,
       avgRatingString: "4.7",
       totalRatingsString: "7",
       sla: {
@@ -280,6 +284,7 @@ const resArrList = [
       cloudinaryImageId: "a6191b983b6f25f9dc82780a244ed21e",
       locality: "Agam Kuan Shitala Colony",
       areaName: "Kankarbagh",
+      promoted: false,
       costForTwo: "₹299 for two",
       cuisines: [
         "Chinese",
@@ -363,6 +368,7 @@ const resArrList = [
       avgRating: 5,
       veg: true,
       parentId: "4202",
+      promoted: false,
       avgRatingString: "5.0",
       totalRatingsString: "2",
       sla: {
@@ -431,6 +437,7 @@ const resArrList = [
       cuisines: ["Bakery", "Indian", "Ice Cream Cakes", "Cakes and Pastries"],
       avgRating: 3.8,
       veg: true,
+      promoted: false,
       parentId: "54688",
       avgRatingString: "3.8",
       totalRatingsString: "100+",
@@ -514,6 +521,7 @@ const resArrList = [
       costForTwo: "₹200 for two",
       cuisines: ["Bakery"],
       parentId: "2650",
+      promoted: false,
       avgRatingString: "NEW",
       sla: {
         deliveryTime: 57,
@@ -581,6 +589,7 @@ const resArrList = [
       cuisines: ["North Indian", "Chinese", "Fast Food", "Italian"],
       avgRating: 3.8,
       veg: true,
+      promoted: false,
       parentId: "222100",
       avgRatingString: "3.8",
       totalRatingsString: "500+",
@@ -667,6 +676,7 @@ const resArrList = [
       avgRating: 3.8,
       veg: true,
       parentId: "222100",
+      promoted: false,
       avgRatingString: "3.8",
       totalRatingsString: "500+",
       sla: {
@@ -691,6 +701,7 @@ const resArrList = [
       avgRating: 3.8,
       veg: true,
       parentId: "222100",
+      promoted: false,
       avgRatingString: "3.8",
       totalRatingsString: "500+",
       sla: {
@@ -716,6 +727,7 @@ const resArrList = [
       avgRating: 3.8,
       veg: true,
       parentId: "222100",
+      promoted: false,
       avgRatingString: "4.8",
       totalRatingsString: "500+",
       sla: {

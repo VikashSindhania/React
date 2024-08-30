@@ -1,28 +1,33 @@
-#heading {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* So the below code had all been commented because now Tailwind is Present.  */
+
+/* . So we define all css of the Application here in this file. But This is not a Recommended Way in Production and Related To Industry Purpose  
+ . #heading {
   color: red;
-}
+}  
 
-/* */
-
-.header {
-  display: flex; /* Convert Vertical To Horizontal View & Vice-Versa */
-  justify-content: space-between; /* left End  space-between   Right End  ...        space will be present between food logp and nav-items*/
+ .header {
+  display: flex; . Convert Vertical To Horizontal View & Vice-Versa 
+  justify-content: space-between; . left End  space-between   Right End  ...        space will be present between food logp and nav-items
   border: 1px solid black;
-}
+} 
 
-.logo {
+ .logo {
   width: 100px;
   background-color: aqua;
-}
+} 
 
 .nav-items {
-  padding: 0px 20px; /*  Top and bottom = 0px  left & Rightt side = 20px*/
+  padding: 0px 20px; .  Top and bottom = 0px  left & Rightt side = 20px
 }
 
 .nav-items > ul {
   font-size: 20px;
-  display: flex; /* Convert Vertical To Horizontal View & Vice-Versa */
-  list-style-type: none; /*Remove the Bullet Points */
+  display: flex; . Convert Vertical To Horizontal View & Vice-Versa 
+  list-style-type: none; .Remove the Bullet Points 
   margin-left: 280px;
 }
 
@@ -34,7 +39,7 @@
 .res-card {
   width: 200px;
   margin: 10px;
-  /* height: 300px; dont define it will take automatically*/
+  . height: 300px; dont define it will take automatically
   border: 1px solid navy;
 }
 
@@ -60,11 +65,11 @@
   border: 2px solid navy;
 }
 
-/* */
+. 
 
 .res-container {
   display: flex;
-  flex-wrap: wrap; /* Wrap your Cards Vertical to Horizontal View*/
+  flex-wrap: wrap; . Wrap your Cards Vertical to Horizontal View
   margin: 5px;
 }
 
@@ -97,4 +102,5 @@
 
 .search-btn {
   margin-left: 2px;
-}
+} 
+ */
