@@ -9,6 +9,8 @@ import Error from "./components/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"; // RouterProvider will provide our routing configuration "appRouter" to our app
 import RestaurantMenu from "./components/RestaurantMenu";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux"; // We are importing the store like this.
+import appStore from "./utils/appstore";
 
 //lec-09 -- 26-08-2024
 //Chunking
@@ -26,6 +28,7 @@ import UserContext from "./utils/UserContext";
 //const Grocery = lazy(() => import("Define Your Path here"))
 const Grocery = lazy(() => import("./components/Grocery"));
 const About = lazy(() => import("./components/About"));
+const Cart = lazy(() => import("./components/Cart"));
 
 /**
  * Header
@@ -95,17 +98,19 @@ const AppLayout = () => {
   return (
     //Default UserName
     <>
-      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
-        {/* {Vikash Kumar} */}
-        {/* // This is how we transferred the data to all the components.With help of "Provider" */}
+      <Provider store={appStore}>
+        <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+          {/* {Vikash Kumar} */}
+          {/* // This is how we transferred the data to all the components.With help of "Provider" */}
 
-        <UserContext.Provider value={{ loggedInUser: "Elon Musk" }}>
-          {/* {Elon Musk}   */}
-          <Header />
+          <UserContext.Provider value={{ loggedInUser: "Elon Musk" }}>
+            {/* {Elon Musk}   */}
+            <Header />
+          </UserContext.Provider>
+          {/* Routes component will be replaced by this outlet */}
+          <Outlet />
         </UserContext.Provider>
-        {/* Routes component will be replaced by this outlet */}
-        <Outlet />
-      </UserContext.Provider>
+      </Provider>
     </>
   );
 };
@@ -163,6 +168,16 @@ const appRouter = createBrowserRouter([
           </Suspense>
         ), // then load my About component
       },
+
+      {
+        path: "/cart", // if my path is /contact
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <Cart />
+          </Suspense>
+        ), // then load my About component
+      },
+
       {
         path: "/restaurants/:resId", // resId is dynamic here. We use like this for dynamic Routings
         element: <RestaurantMenu />,

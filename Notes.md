@@ -259,3 +259,29 @@ if(this.state.count !== prevState.count || this.state.count !== prevState.count2
 
     </UserContext.Provider>
     </>
+
+98. Redux
+99. Redux offers state management. Redux is different Library.
+100.  We use the React-Redux library
+101.  Redux-toolKit reduce the complexity of React-Redux.
+102.  In our product we are using Redux Toolkit.
+103.  Redux store is big javascript object and itt is kept in global central place.is it good to keep all the data inside the big object of the Application.
+104.  with lot of slices present in the Redux store we can reduce the complexity of Redux.
+105.  so the parts of the Redux store are divided into number of slices and that part of slices represent the redux store.
+106.  we can keep the information like user logged, theme mode, cart slice etc.
+107.  IT's work like that when you click on "ADD To CART" then it initate or call the dispatch action and then one function is called which is responsible for to modified the value of the cart. and that function is known as reducer function.
+108.  "Add To Cart " clicked --> "It dispatches an Action Which calls" --> "Reducer function" --> "Which updates the slice of our Redux store"
+109.  After this a new concept come "Selector" . The selector will give you the data to show the incresing value of cart in your UI ."Selector" also means here "subscribing to the store".It is in sync with the store.
+110.  "SETUP" --> "
+111.  - Install @reduxjs/toolkit and react-redux
+112.  - Build our store
+113.  -Connect our store to our App
+114.  -dispatch
+115.  -slice
+116.  -selector
+117.  Each slice have its own reducer function
+118.
+
+119.  onClick={handleAddItem}: Directly assigns the function as an event handler. Executes when clicked.
+      onClick={() => handleAddItem()}: Wraps the function in an arrow function. Useful for adding logic or passing parameters.
+      onClick={handleAddItem(item)}: Immediately invokes the function during render. Not suitable for event handling.

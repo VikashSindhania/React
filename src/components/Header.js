@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext.js";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   let btnName = "Login";
@@ -14,6 +15,16 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   const { loggedInUser } = useContext(UserContext);
+
+  // Episode- 12 concept .We are here using the Selector . At last Selector is an hook at the end of the day.  "useSelector" --> coming from react redux library.
+  // Subscribing to the store using a selector.
+  // useSelector give access to the store.
+  //(store) --> give us access to the store
+  //{store.cart.items} --. what portion of store we need to access.
+
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log("CartItems", cartItems); // Whenever we are clicking add button then an action is dispatched which calls the reducer function which updates the slice of the store  and because my header is subscribed to the store using a selector everything is working seamlessly fine.
+  // Behind the scene redux is doing lot of things for us. //Playing the role os selector
 
   // useEffect is called by passing two arguments.one is callback function  (callback) => { ...} and other one id dependency Argument.
   // It will definitely called after initial render.
@@ -49,6 +60,10 @@ const Header = () => {
 
           <li className="px-4">
             <Link to="/grocery">Grocery</Link>
+          </li>
+
+          <li className="px-4 font-bold text-xl">
+            <Link to="/cart">Cart-({cartItems.length} items)</Link>
           </li>
 
           <li className="px-4 font-bold">{loggedInUser}</li>
