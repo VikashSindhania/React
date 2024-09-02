@@ -299,3 +299,7 @@ if(this.state.count !== prevState.count || this.state.count !== prevState.count2
 129.  -Integration Testing --> Testing the Integration of the component. Ex - On searching. Where multiple components are involved.
 130.  -End to End testing -e2e testing --> As soon as the user landing on the page and doing all operating and at end leaving the page.
 131.
+
+132.  -->React Testing Library<--
+133.  When we do npx-create-react-app then their React Testing Library is already installed or integrated but in parcel we need to integrate it & have to de setup
+134.  . Behind the scene React Testing Library is using JEST Library
