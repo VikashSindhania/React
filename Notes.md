@@ -285,3 +285,17 @@ if(this.state.count !== prevState.count || this.state.count !== prevState.count2
 119.  onClick={handleAddItem}: Directly assigns the function as an event handler. Executes when clicked.
       onClick={() => handleAddItem()}: Wraps the function in an arrow function. Useful for adding logic or passing parameters.
       onClick={handleAddItem(item)}: Immediately invokes the function during render. Not suitable for event handling.
+
+120.  TESTING (Types of Testing) A developer can do...
+121.  --Unit Testing
+122.  -Integration Testing
+123.  -End To End Testing
+
+124.  Unit Testing...
+125.  Integration
+126.  End - End Testing ---> cypress, pupeteer and uses lot of tools
+127.
+128.  - Unit Testing --> You are testing for small portion of your App, Ex-like some line of code , code in one component.Testing one component in isolation.
+129.  -Integration Testing --> Testing the Integration of the component. Ex - On searching. Where multiple components are involved.
+130.  -End to End testing -e2e testing --> As soon as the user landing on the page and doing all operating and at end leaving the page.
+131.
