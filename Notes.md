@@ -303,3 +303,20 @@ if(this.state.count !== prevState.count || this.state.count !== prevState.count2
 132.  -->React Testing Library<--
 133.  When we do npx-create-react-app then their React Testing Library is already installed or integrated but in parcel we need to integrate it & have to de setup
 134.  . Behind the scene React Testing Library is using JEST Library
+      You need to do npm i -D jest
+      npm install --save-dev babel-jest @babel/core @babel/preset-env
+      npm i -D @testing-library/react
+      Install babel dependencies & set up the babel.config.js file & configure it.
+
+135.  Setting up Testing in our App
+136.  - Install React Testing Library
+137.  - Installed jest
+138.  - Installed Babel dependencies
+139.  -Configure Babel
+140.  - Configure Parcel Config file to disable default babel transpilation.
+141.
+
+142.  npx jest --init
+
+- It Will ask Some Question after givind command npx jest --init
+- then follow this jsdom (browser-like)
