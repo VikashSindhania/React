@@ -314,9 +314,23 @@ if(this.state.count !== prevState.count || this.state.count !== prevState.count2
 138.  - Installed Babel dependencies
 139.  -Configure Babel
 140.  - Configure Parcel Config file to disable default babel transpilation.
-141.
+141.  Jest -npx test --init
+142.  Install jsdom Library
+143.  Install @babel/preset-react - to make JSX work in test cases
+144.  Include @babel/preset-react inside my babel config
+145.  Install npm i -D @testing-library/jest-dom
 
-142.  npx jest --init
+146.  npx jest --init
 
 - It Will ask Some Question after givind command npx jest --init
 - then follow this jsdom (browser-like)
+- After configuration install JSDOM Library.
+- npm install --save-dev jest-environment-jsdom
+- Then Install this @babel/preset-react
+-
+
+- //Headers.test.js
+  //Headers.test.ts
+  //Headers.spec.js
+  //Headers.spect.ts
+  // \_\_ = is known as dunder **FileNameForTesting**
