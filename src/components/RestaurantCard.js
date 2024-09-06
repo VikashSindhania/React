@@ -3,7 +3,7 @@ import { useContext } from "react";
 import UserContext from "../utils/UserContext";
 
 const RestaurantCard = ({ resListData }) => {
-  //console.log(resListData.info);
+  // console.log("resListData", resListData.info);
   const { name, cuisines, avgRatingString, costForTwo } = resListData.info;
   const { deliveryTime } = resListData?.info.sla; // chaining Operation Can also Write like this
 
