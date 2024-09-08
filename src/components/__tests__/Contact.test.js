@@ -8,6 +8,24 @@ import "@testing-library/jest-dom";
 describe("Contact", () => {
   // For Group of Test Cases to be tested we use dscribe method
 
+  beforeAll(() => {
+    console.log(
+      "Before All Method You can run here ... so if need to clean cache & anything else which needs to be done before that code should be defined in this "
+    );
+  });
+
+  beforeEach(() => {
+    console.log("Before Each . This will helpful in any clean UP task ");
+  });
+
+  afterAll(() => {
+    console.log("After All");
+  });
+
+  afterEach(() => {
+    console.log("After Each. These all are helper function");
+  });
+
   it("Should Load contact us component", () => {
     render(<Contact />); // First We are Rendering the Contact Component
     const heading = screen.getByRole("heading");
