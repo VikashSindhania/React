@@ -334,3 +334,5 @@ if(this.state.count !== prevState.count || this.state.count !== prevState.count2
   //Headers.spec.js
   //Headers.spect.ts
   // \_\_ = is known as dunder **FileNameForTesting**
+
+Our Parcel has a HMR (Hot Module Replacement) Which automatically refresh the Application on Saving.

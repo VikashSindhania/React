@@ -220,6 +220,7 @@ const Body = () => {
         <div className="search m-4 px-4">
           <input
             type="text"
+            data-testid="searchInput"
             className="border border-solid border-black"
             placeholder="Search-food"
             value={searchText}
@@ -264,7 +265,7 @@ const Body = () => {
             onChange={(e) => setUserName(e.target.value)} // here we call the function {(e) => setUserName()}}
           />
         </div>
-        {/* <div className="search m-4 p-4 flex items-center">
+        <div className="search m-4 p-4 flex items-center">
           <button
             className="px-4 py-2 bg-gray-100 rounded-2xl"
             onClick={() => {
@@ -278,7 +279,7 @@ const Body = () => {
           >
             Top Rated Restaurants
           </button>
-        </div> */}
+        </div>
       </div>
       <div className="flex flex-wrap">
         {/* The Componment which will be always be in Reuse its better to define that functional Component Independently*/}
